@@ -1,0 +1,107 @@
+package com.example.hp.maps;
+
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private GoogleMap mMap;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.style));
+
+            if (!success) {
+                Log.e("MapsActivity", "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e("MapsActivity", "Can't find style. Error: ", e);
+        }
+        // Add a marker in Sydney and move the camera
+        LatLng BMS = new LatLng(12.941259, 77.565229);
+        mMap.addMarker(new MarkerOptions().position(BMS).title("BMSCE Main Building"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(BMS, 17.5F)); // goes from 16 to 21
+        LatLng PGBlock = new LatLng(12.941607, 77.565884);
+        mMap.addMarker(new MarkerOptions().position(PGBlock).title("PG Block"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(PGBlock, 17.5F)); // goes from 16 to 21
+        LatLng CampusToilet = new LatLng(12.941257, 77.565120);
+        mMap.addMarker(new MarkerOptions().position(CampusToilet).title("Toilet"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CampusToilet, 17.5F)); // goes from 16 to 21
+        LatLng LawClg = new LatLng(12.942247, 77.565967);
+        mMap.addMarker(new MarkerOptions().position(LawClg).title("BMS College of Law"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LawClg, 17.5F)); // goes from 16 to 21
+        LatLng Mech = new LatLng(12.942273, 77.565420);
+        mMap.addMarker(new MarkerOptions().position(Mech).title("Mech Dept"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Mech, 17.5F)); // goes from 16 to 21
+        LatLng Canteen = new LatLng(12.940435, 77.565833);
+        mMap.addMarker(new MarkerOptions().position(Canteen).title("Canteen"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Canteen, 17.5F)); // goes from 16 to 21
+        LatLng Mess = new LatLng(12.939930, 77.565323);
+        mMap.addMarker(new MarkerOptions().position(Mess).title("College Mess"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Mess, 17.5F)); // goes from 16 to 21
+        LatLng MainGate = new LatLng(12.941608, 77.566911);
+        mMap.addMarker(new MarkerOptions().position(MainGate).title("Main Gate"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Mess, 17.5F)); // goes from 16 to 21
+        LatLng Rgarden = new LatLng(12.942162, 77.566876);
+        mMap.addMarker(new MarkerOptions().position(Rgarden).title("Rock Garden"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Rgarden, 17.5F)); // goes from 16 to 21
+        LatLng Admin = new LatLng(12.941355, 77.566378);
+        mMap.addMarker(new MarkerOptions().position(Admin).title("Administration Block"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Admin, 17.5F)); // goes from 16 to 21
+        LatLng Ground = new LatLng(12.941104, 77.566037);
+        mMap.addMarker(new MarkerOptions().position(Ground).title("Play Ground"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Ground, 17.5F)); // goes from 16 to 21
+        LatLng H1 = new LatLng(12.940200, 77.564792);
+        mMap.addMarker(new MarkerOptions().position(H1).title("NBH1 and NBH2"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(H1, 17.5F)); // goes from 16 to 21
+        LatLng H2 = new LatLng(12.939557, 77.564953);
+        mMap.addMarker(new MarkerOptions().position(H2).title("NBH3"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(H2, 17.5F)); // goes from 16 to 21
+        LatLng All = new LatLng(12.939954, 77.565092);
+        mMap.addMarker(new MarkerOptions().position(All).title("Allahabad Bank"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(All, 17.5F)); // goes from 16 to 21
+    }
+}
+
+
+API - KEY
+AIzaSyD8Jz7yWa81PaqCETHYy_DncRBu8kjlzF8
+
+
